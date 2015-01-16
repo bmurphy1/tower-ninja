@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require phaser
 //= require_tree .
-//= require phaser.js
-//= require tower_ninja.js
+//= require tower_ninja
 
