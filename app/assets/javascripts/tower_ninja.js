@@ -9,6 +9,7 @@ function preload() {
 
 var platforms;
 var player;
+var cursors;
 
 function create() {
 
