@@ -62,7 +62,6 @@ function create() {
 
     game.physics.arcade.enable(player);
 
-    player.body.gravity.y = 300;
     player.body.collideWorldBounds = true;
 
     player.animations.add('left', [0,1,2,3], 10, true);
