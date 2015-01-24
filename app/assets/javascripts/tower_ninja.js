@@ -5,11 +5,13 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer', {preload: pre
 function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/platform.png');
+    game.load.image('wall', 'assets/wall.png');
     game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 };
 
 var platforms;
+var walls;
 var player;
 var cursors;
 
@@ -45,6 +47,19 @@ function create() {
 //    var ledge = platforms.create(-150, 200, 'ground');
 //    ledge.body.immovable = true;
 
+    // WALLS
+    walls = game.add.group();
+    walls.enableBody = true;
+    var leftWall = walls.create(0, 0, 'wall');
+    var rightWall = walls.create(game.world.width-64, 0, 'wall');
+    leftWall.body.immovable = true;
+    rightWall.body.immovable = true;
+    leftWall.scale.setTo(1,2);
+    rightWall.scale.setTo(1,2);
+
+    // Ready Player One
+    player = game.add.sprite(48, game.world.height - 150, 'dude');
+
     game.physics.arcade.enable(player);
 
 //    player.body.bounce.y = 0.2;
@@ -60,7 +75,9 @@ function create() {
 
 // ==================== UPDATE ====================================//
 function update() {
+
     game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(player, walls);
 
     player.body.velocity.x = 0;
 
