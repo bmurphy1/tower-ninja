@@ -1,5 +1,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer', {preload: preload, create: create, update: update});
 
+
+// ======================= PRELOAD ================================= //
 function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/platform.png');
@@ -11,16 +13,24 @@ var platforms;
 var player;
 var cursors;
 
+
+// ======================== CREATE ================================= //
 function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
+    cursors = game.input.keyboard.createCursorKeys();
+    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+//    this.physics.arcade.gravity.x = 300;
+
+//    game.world.rotation = 1.4;
+//    game.camera.y =600;
 
     game.add.sprite(0,0,'sky');
 
+    // PLATFORMS
     platforms = game.add.group();
-
     platforms.enableBody = true;
-
     var ground = platforms.create(0, game.world.height - 64, 'ground');
     var ceiling = platforms.create(0, 0, 'ground');
 
@@ -30,13 +40,13 @@ function create() {
     ground.body.immovable = true;
     ceiling.body.immovable = true;
 
-    var ledge = platforms.create(200, 400, 'ground');
-    ledge.body.immovable = true;
-    ledge = platforms.create(-150, 200, 'ground');
-    ledge.body.immovable = true;
-
-    // Ready Plater One
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    // LEDGES
+//    var ledge = platforms.create(200, 400, 'ground');
+//    game.physics.arcade.enable(ledge);
+//    ledge.body.immovable = true;
+//    ledge.body.velocity.x = -25;
+//    var ledge = platforms.create(-150, 200, 'ground');
+//    ledge.body.immovable = true;
 
     game.physics.arcade.enable(player);
 
@@ -50,6 +60,8 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
 };
 
+
+// ==================== UPDATE ====================================//
 function update() {
     game.physics.arcade.collide(player, platforms);
 
@@ -78,11 +90,9 @@ function update() {
     }
 }
 
-function toggleGravity(g) {
-    if (g > 0) {
-        return -g;
+
+// ========================= OTHER ================================ //
     } else {
-        return g;
     }
 }
 
