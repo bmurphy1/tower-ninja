@@ -1,13 +1,13 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer', {preload: preload, create: create, update: update});
+var game = new Phaser.Game(375, 667, Phaser.AUTO, 'gameContainer', {preload: preload, create: create, update: update});
 
 
 // ======================= PRELOAD ================================= //
 function preload() {
-    game.load.image('sky', 'assets/sky.png');
-    game.load.image('ground', 'assets/platform.png');
-    game.load.image('wall', 'assets/wall.png');
-    game.load.image('star', 'assets/star.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    game.load.image('sky', 'images/sky.png');
+    game.load.image('ground', 'images/platform.png');
+    game.load.image('wall', 'images/wall.png');
+    game.load.image('star', 'images/star.png');
+    game.load.spritesheet('dude', 'images/dude.png', 32, 48);
 };
 
 var platforms;
@@ -26,7 +26,8 @@ function create() {
 
 //    this.physics.arcade.gravity.x = 300;
 
-    game.add.sprite(0,0,'sky');
+    sky = game.add.sprite(0,0,'sky');
+    sky.scale.setTo(1,2);
 
     // PLATFORMS
     platforms = game.add.group();
@@ -52,7 +53,7 @@ function create() {
     walls = game.add.group();
     walls.enableBody = true;
     var leftWall = walls.create(0, 0, 'wall');
-    var rightWall = walls.create(game.world.width-64, 0, 'wall');
+    var rightWall = walls.create(game.world.width-32, 0, 'wall');
     leftWall.body.immovable = true;
     rightWall.body.immovable = true;
     leftWall.scale.setTo(1,2);
@@ -64,7 +65,7 @@ function create() {
     game.physics.arcade.enable(player);
 
     player.anchor.setTo(.5, .5);
-    player.body.gravity.x = 20000;
+    player.body.gravity.x = 40000;
     player.body.collideWorldBounds = true;
     player.body.velocity.x = 50;
 
