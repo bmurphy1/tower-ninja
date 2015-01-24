@@ -23,9 +23,6 @@ function create() {
 
 //    this.physics.arcade.gravity.x = 300;
 
-//    game.world.rotation = 1.4;
-//    game.camera.y =600;
-
     game.add.sprite(0,0,'sky');
 
     // PLATFORMS
@@ -95,9 +92,6 @@ function update() {
     } else {
     }
 }
-
-
-
 
 
 
