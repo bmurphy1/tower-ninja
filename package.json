@@ -1,6 +1,11 @@
 {
-  "name":"Tower Ninja",
+  "name":"tower-ninja",
+  "version": "0.0.1",
+  "main": "server.js",
   "engines": {
     "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "~4.9.x"
   }
 }

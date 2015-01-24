@@ -1,9 +1,13 @@
-var static = require('node-static');
+var express = require('express');
+var app = express();
 
-var fileServer = new static.Server('./public');
+app.set('port', (process.env.PORT || 8080));
+app.use(express.static(__dirname + '/public'));
 
-require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-        fileServer.serve(request, response);
-    }).resume();
-}).listen(8080);
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+});
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
