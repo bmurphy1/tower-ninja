@@ -96,20 +96,24 @@ function update() {
     }
 
     // Jumping back and forth
-    if (cursors.up.isDown && (player.body.touching.down || player.body.touching.up)) {
-        if (player.body.gravity.y > 0) {
-            player.body.velocity.y = -350;
-            player.body.gravity.y = -500;
-        } else {
-            player.body.velocity.y = 350;
-            player.body.gravity.y = 500;
-        }
+    if (jumpButton.isDown && (player.body.touching.right || player.body.touching.left)) {
+        jump(player);
+
     }
 }
 
 
 // ========================= OTHER ================================ //
+function jump(player) {
+    console.log('jump pressed');
+    if (player.body.gravity.x > 0) {
+        player.scale.x = -1;
+        player.body.velocity.x = -player.body.velocity.x;
+        player.body.gravity.x = -player.body.gravity.x;
     } else {
+        player.scale.x = 1;
+        player.body.velocity.x = -player.body.velocity.x;
+        player.body.gravity.x = -player.body.gravity.x;
     }
 }
 
