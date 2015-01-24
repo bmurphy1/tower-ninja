@@ -62,12 +62,17 @@ function create() {
 
     game.physics.arcade.enable(player);
 
+    player.anchor.setTo(.5, .5);
+    player.body.gravity.x = 20000;
     player.body.collideWorldBounds = true;
+    player.body.velocity.x = 50;
 
     player.animations.add('left', [0,1,2,3], 10, true);
     player.animations.add('right', [5,6,7,8], 10, true);
 
     cursors = game.input.keyboard.createCursorKeys();
+    game.camera.follow(player);
+
 };
 
 
