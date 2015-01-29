@@ -8,6 +8,13 @@
 <body>
   <p>Tower Ninja</p>
   <div id="gameDiv"></div>
+  <script type="text/javascript">
+    window.onload = function() {
+      var game = new Phaser.Game(375, 667, Phaser.AUTO, 'gameContainer');
+      game.state.add('Game', TowerNinja.Game);
+      game.state.start('Game');
+    }
+  </script>
 </body>
 
 </html>
