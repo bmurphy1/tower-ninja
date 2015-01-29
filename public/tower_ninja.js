@@ -76,6 +76,8 @@ TowerNinja.Game.prototype = {
         this.player.animations.add('right', [5,6,7,8], 10, true);
 
         this.camera.follow(this.player);
+
+        jumpButton.onDown.add(this.jump, this);
     },
 
 
