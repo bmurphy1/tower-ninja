@@ -90,25 +90,6 @@ TowerNinja.Game.prototype = {
         this.physics.arcade.collide(this.player, walls);
 
         this.player.body.velocity.x = 0;
-
-        // jumpButton.onDown.add(jump(player), this);
-
-    //     if (cursors.left.isDown) {
-    //         player.body.velocity.x = -150;
-    // //        player.animations.play('left');
-    //     } else if (cursors.right.isDown) {
-    //         player.body.velocity.x = 150;
-    // //        player.animations.play('right');
-    //     } else {
-    // //        player.animations.stop();
-    //         player.frame = 4;
-    //     }
-
-        // Jumping back and forth
-    //     if (jumpButton.onDown {
-    //         jump(player);
-
-    //     }
     },
 
 
