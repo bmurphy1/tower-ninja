@@ -63,14 +63,15 @@ TowerNinja.Game.prototype = {
         rightWall.scale.setTo(1,2);
 
         // Ready Player One
-        this.player = this.add.sprite(48, this.world.height - 150, 'dude');
+        this.player = this.add.sprite(48, this.world.height - 250, 'dude');
 
         this.physics.arcade.enable(this.player);
 
         this.player.anchor.setTo(.5, .5);
-        this.player.body.gravity.x = 40000;
+        this.player.body.gravity.x = -40000;
+        this.player.body.gravity.y = 20;
         this.player.body.collideWorldBounds = true;
-        this.player.body.velocity.x = 50;
+        this.player.body.velocity.y = -60;
 
         this.player.animations.add('left', [0,1,2,3], 10, true);
         this.player.animations.add('right', [5,6,7,8], 10, true);
@@ -113,6 +114,7 @@ TowerNinja.Game.prototype = {
     // ========================= OTHER ================================ //
     jump: function() {
         console.log('jump pressed');
+        this.player.body.velocity.y = -60;
         if (this.player.body.touching.right || this.player.body.touching.left) {
             if (this.player.body.gravity.x > 0) {
                 this.player.scale.x = -1;
