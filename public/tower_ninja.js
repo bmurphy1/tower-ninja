@@ -36,14 +36,14 @@ TowerNinja.Game.prototype = {
         // PLATFORMS
         platforms = this.add.group();
         platforms.enableBody = true;
-        var ground = platforms.create(0, this.world.height - 64, 'ground');
-        var ceiling = platforms.create(0, 0, 'ground');
+        // var ground = platforms.create(0, this.world.height - 64, 'ground');
+        // var ceiling = platforms.create(0, 0, 'ground');
 
-        ground.scale.setTo(2,2);
-        ceiling.scale.setTo(2,2);
+        // ground.scale.setTo(2,2);
+        // ceiling.scale.setTo(2,2);
 
-        ground.body.immovable = true;
-        ceiling.body.immovable = true;
+        // ground.body.immovable = true;
+        // ceiling.body.immovable = true;
 
         // LEDGES
     //    var ledge = platforms.create(200, 400, 'ground');
