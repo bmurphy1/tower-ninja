@@ -72,7 +72,7 @@ TowerNinja.Game.prototype = {
 
         this.player.anchor.setTo(.5, .5);
         this.player.body.gravity.x = -40000;
-        this.player.body.gravity.y = 1000;
+        this.player.body.gravity.y = 800;
         this.player.body.collideWorldBounds = true;
         this.player.body.velocity.y = this.maxVelocity;
 
