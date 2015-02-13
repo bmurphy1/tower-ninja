@@ -18,7 +18,7 @@ TowerNinja.Game.prototype = {
         this.load.image('ground', 'images/platform.png');
         this.load.image('wall', 'images/wall.png');
         this.load.image('star', 'images/star.png');
-        this.load.spritesheet('dude', 'images/dude.png', 32, 48);
+        this.load.image('ninjaClimbing', 'images/ninjaClimbing.gif');
     },
 
     // ======================== CREATE ================================= //
@@ -66,7 +66,7 @@ TowerNinja.Game.prototype = {
         rightWall.scale.setTo(1,2);
 
         // Ready Player One
-        this.player = this.add.sprite(48, this.world.height - 250, 'dude');
+        this.player = this.add.sprite(48, this.world.height - 250, 'ninjaClimbing');
 
         this.physics.arcade.enable(this.player);
 
@@ -103,11 +103,11 @@ TowerNinja.Game.prototype = {
         this.player.body.velocity.y = this.maxVelocity;
         if (this.player.body.touching.right || this.player.body.touching.left) {
             if (this.player.body.gravity.x > 0) {
-                this.player.scale.x = -1;
+                this.player.scale.x = 1;
                 this.player.body.velocity.x = -this.player.body.velocity.x;
                 this.player.body.gravity.x = -this.player.body.gravity.x;
             } else {
-                this.player.scale.x = 1;
+                this.player.scale.x = -1;
                 this.player.body.velocity.x = -this.player.body.velocity.x;
                 this.player.body.gravity.x = -this.player.body.gravity.x;
             }
