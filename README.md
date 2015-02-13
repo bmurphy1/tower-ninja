@@ -15,3 +15,5 @@ It's configured to run locally on Node.js with node-static.
 $ node server.js
 ```
 Then browse to localhost.8080.
+
+Still very much a work in progress.
