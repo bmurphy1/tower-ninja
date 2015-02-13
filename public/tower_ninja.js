@@ -7,13 +7,14 @@ TowerNinja.Game = function(game) {
     this.cursors;
     this.jumpButton;
     this.maxVelocity = -500;
+    this.bgTile;
 };
 
 TowerNinja.Game.prototype = {
 
     // ======================= PRELOAD ================================= //
     preload: function() {
-        this.load.image('sky', 'images/sky.png');
+        this.load.image('bg', 'images/bg.png');
         this.load.image('ground', 'images/platform.png');
         this.load.image('wall', 'images/wall.png');
         this.load.image('star', 'images/star.png');
@@ -29,9 +30,10 @@ TowerNinja.Game.prototype = {
 
 
         // this.physics.arcade.gravity.x = 300;
+        this.bgTile = this.add.tileSprite(0,0, this.stage.bounds.width, this.cache.getImage('bg').height, 'bg');
 
-        sky = this.add.sprite(0,0,'sky');
-        sky.scale.setTo(1,2);
+        // sky = this.add.sprite(0,0,'sky');
+        // sky.scale.setTo(1,2);
 
         // PLATFORMS
         platforms = this.add.group();
