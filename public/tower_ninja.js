@@ -101,7 +101,7 @@ TowerNinja.Game.prototype = {
     jump: function() {
         console.log('jump pressed');
         this.player.body.velocity.y = this.maxVelocity;
-        if (this.player.body.touching.right || this.player.body.touching.left) {
+        if (this.touchingWalls(this.player)) {
             if (this.player.body.gravity.x > 0) {
                 this.player.scale.x = 1;
                 this.player.body.velocity.x = -this.player.body.velocity.x;
@@ -112,6 +112,10 @@ TowerNinja.Game.prototype = {
                 this.player.body.gravity.x = -this.player.body.gravity.x;
             }
         }
+    },
+
+    touchingWalls: function(obj) {
+        return obj.body.touching.right || obj.body.touching.left
     }
 }
 
