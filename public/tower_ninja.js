@@ -92,6 +92,8 @@ TowerNinja.Game.prototype = {
         this.physics.arcade.collide(this.player, walls);
 
         this.player.body.velocity.x = 0;
+
+        this.bgTile.tilePosition.y += 1;
     },
 
 
