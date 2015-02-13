@@ -25,19 +25,21 @@ TowerNinja.Game.prototype = {
     create: function() {
 
         this.physics.startSystem(Phaser.Physics.ARCADE);
-        cursors = this.input.keyboard.createCursorKeys();
-        jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         // BACKGROUND
         this.bgTile = this.add.tileSprite(0,0, this.stage.bounds.width, this.cache.getImage('bg').height, 'bg');
 
         // PLATFORMS
+        this.platforms = this.add.group();
+        this.platforms.enableBody = true;
 
         // WALLS
-        walls = this.add.group();
-        walls.enableBody = true;
-        var leftWall = walls.create(0, 0, 'wall');
-        var rightWall = walls.create(this.world.width-32, 0, 'wall');
+        this.walls = this.add.group();
+        this.walls.enableBody = true;
+        var leftWall = this.walls.create(0, 0, 'wall');
+        var rightWall = this.walls.create(this.world.width-32, 0, 'wall');
         leftWall.body.immovable = true;
         rightWall.body.immovable = true;
         leftWall.scale.setTo(1,2);
@@ -54,20 +56,17 @@ TowerNinja.Game.prototype = {
         this.player.body.collideWorldBounds = true;
         this.player.body.velocity.y = this.maxVelocity;
 
-        this.player.animations.add('left', [0,1,2,3], 10, true);
-        this.player.animations.add('right', [5,6,7,8], 10, true);
-
         this.camera.follow(this.player);
 
-        jumpButton.onDown.add(this.jump, this);
+        this.jumpButton.onDown.add(this.jump, this);
     },
 
 
     // ==================== UPDATE ====================================//
     update: function() {
 
-        this.physics.arcade.collide(this.player, platforms);
-        this.physics.arcade.collide(this.player, walls);
+        this.physics.arcade.collide(this.player, this.platforms);
+        this.physics.arcade.collide(this.player, this.walls);
 
         this.player.body.velocity.x = 0;
 
