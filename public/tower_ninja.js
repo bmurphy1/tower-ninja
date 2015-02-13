@@ -28,32 +28,10 @@ TowerNinja.Game.prototype = {
         cursors = this.input.keyboard.createCursorKeys();
         jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-
-        // this.physics.arcade.gravity.x = 300;
+        // BACKGROUND
         this.bgTile = this.add.tileSprite(0,0, this.stage.bounds.width, this.cache.getImage('bg').height, 'bg');
 
-        // sky = this.add.sprite(0,0,'sky');
-        // sky.scale.setTo(1,2);
-
         // PLATFORMS
-        platforms = this.add.group();
-        platforms.enableBody = true;
-        // var ground = platforms.create(0, this.world.height - 64, 'ground');
-        // var ceiling = platforms.create(0, 0, 'ground');
-
-        // ground.scale.setTo(2,2);
-        // ceiling.scale.setTo(2,2);
-
-        // ground.body.immovable = true;
-        // ceiling.body.immovable = true;
-
-        // LEDGES
-    //    var ledge = platforms.create(200, 400, 'ground');
-    //    this.physics.arcade.enable(ledge);
-    //    ledge.body.immovable = true;
-    //    ledge.body.velocity.x = -25;
-    //    var ledge = platforms.create(-150, 200, 'ground');
-    //    ledge.body.immovable = true;
 
         // WALLS
         walls = this.add.group();
