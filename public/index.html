@@ -2,6 +2,7 @@
 <html>
 <head>
   <script type="text/javascript" src="libs/phaser.min.js"></script>
+  <script type="text/javascript" src="start_menu.js"></script>
   <script type="text/javascript" src="tower_ninja.js"></script>
 </head>
 
@@ -12,8 +13,9 @@
   <script type="text/javascript">
     window.onload = function() {
       var game = new Phaser.Game(375, 667, Phaser.AUTO, 'gameContainer');
+      game.state.add('StartMenu', TowerNinja.StartMenu)
       game.state.add('Game', TowerNinja.Game);
-      game.state.start('Game');
+      game.state.start('StartMenu');
     }
   </script>
 </body>

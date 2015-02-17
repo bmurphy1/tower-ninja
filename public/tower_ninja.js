@@ -1,5 +1,3 @@
-var TowerNinja = {};
-
 TowerNinja.Game = function(game) {
     this.platforms;
     this.walls;
